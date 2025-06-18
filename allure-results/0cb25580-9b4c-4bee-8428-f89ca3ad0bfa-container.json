@@ -1,0 +1,1 @@
+{"uuid":"0cb25580-9b4c-4bee-8428-f89ca3ad0bfa","name":"DatadrivenAutomationFramework","children":["9956d20f-6423-4adc-910c-c2d20f16bd6c"],"befores":[{"name":"setDriver","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1750156506188,"stop":1750156514899}],"afters":[],"start":1750156506168,"stop":1750156516213}

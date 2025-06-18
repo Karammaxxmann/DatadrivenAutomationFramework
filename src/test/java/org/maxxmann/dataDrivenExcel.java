@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 import org.utiles.excelReader;
 import java.time.Duration;
 
-public class dataDrivenExcel {
+public class  dataDrivenExcel {
     WebDriver driver;
     String URL = "https://www.saucedemo.com/";
     String excel_fileName = "src/test/resources/saucedemo.xlsx";
