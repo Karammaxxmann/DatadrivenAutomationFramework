@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
@@ -24,7 +25,7 @@ public class PracticingAutomationDataDrivenTesting {
     public void setDriver(){
         driver=new ChromeDriver();
         driver.navigate().to(URL);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));;
     }
     @Test(dataProvider = "login")
     public void forms(String Name, String Email, String Phone, String Address) {
@@ -43,8 +44,8 @@ public class PracticingAutomationDataDrivenTesting {
     }
     @Test (dataProvider = "automation_Practice")
     public void selectGender(String genderValue){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         WebElement genderRadio = driver.findElement(By.xpath("//input[@name='gender' and @value='" + genderValue + "']"));
-
         try {
             if ((genderRadio.isDisplayed() && (genderRadio.isEnabled()))) {
                 if (!genderRadio.isSelected()) {
@@ -53,9 +54,7 @@ public class PracticingAutomationDataDrivenTesting {
             }
         } catch (ElementNotInteractableException e) {
             System.out.println("Radio button not selectable: " + e.getMessage());
-
         }
-
     }
     @Test (dataProvider  ="Days")
     public void selectDays(List<String> days){
@@ -73,18 +72,42 @@ public class PracticingAutomationDataDrivenTesting {
     }
     @Test(dataProvider = "dropdown" )
     public void selectDropdown (String value){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         WebElement dropdown =driver.findElement(By.id("country"));
         Select dd =new Select(dropdown);
         dd.selectByValue(value);
 
     }
-    @Test(dataProvider = "multi select" )
-    public void multiSelect (String value){
-        WebElement dropdown =driver.findElement(By.id("country"));
-        Select dd =new Select(dropdown);
-        dd.selectByValue(value);
-
+    @Test(dataProvider = "Colour" )
+    public void multiSelect (List<String> colorsToSelect){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        WebElement colorElement =driver.findElement(By.id("colors"));
+        Select colorSelect =new Select(colorElement);
+        for (String color : colorsToSelect)
+        {
+            try {
+                colorSelect.selectByValue(color);
+                System.out.println("select colour from for loop" + color);
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
+}
     }
+    @Test(dataProvider = "animalList")
+    public void sortedList(List<String> animal){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        WebElement selectListElement =driver.findElement(By.id("animals"));
+        Select selectList =new Select((selectListElement));
+        for (String select : animal){
+            try {
+                selectList.selectByValue(select);
+                System.out.println("selected values are for loop: " + select);
+            }catch (Exception e){
+                System.out.println("not selected value" +animal+ "-" +e.getMessage());
+            }
+        }
+    }
+
 
     @DataProvider(name ="login")
     public Object[] testData() {
@@ -113,11 +136,16 @@ public class PracticingAutomationDataDrivenTesting {
                 {"india"},
         };
     }
-
-    @DataProvider(name ="multi select")
+    @DataProvider(name ="Colour")
     public Object[] testData5() {
         return new Object[][]{
-                {"india"},
+                {Arrays.asList("blue", "red", "green","yellow","white")}
+        };
+    }
+    @DataProvider(name ="animalList")
+    public Object[] testData6() {
+        return new Object[][]{
+                {Arrays.asList("rabbit","giraffe","elephant")}
         };
     }
 
