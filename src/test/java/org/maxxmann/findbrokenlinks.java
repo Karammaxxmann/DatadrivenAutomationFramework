@@ -54,7 +54,6 @@ public class findbrokenlinks {
         }
 
     }
-
     @Test
     public void openlinktab() {
         List<WebElement> lists = driver.findElements(By.tagName("a"));
@@ -66,7 +65,6 @@ public class findbrokenlinks {
             System.out.println("URLs is =" + urls);
         }
     }
-
     @DataProvider(name = "urlProvider")
     public Object[][] provideURLs() {
         return new Object[][]{
