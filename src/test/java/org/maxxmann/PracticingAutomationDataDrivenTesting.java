@@ -1,10 +1,8 @@
 package org.maxxmann;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotInteractableException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
@@ -12,6 +10,8 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.utiles.excelReader;
+
+import java.io.File;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
@@ -20,11 +20,13 @@ public class PracticingAutomationDataDrivenTesting {
     WebDriver driver;
     String URL ="https://testautomationpractice.blogspot.com/";
     String excel_fileName = "src/test/resources/saucedemo.xlsx";
+    JavascriptExecutor js =(JavascriptExecutor)driver;
 
     @BeforeTest
     public void setDriver(){
         driver=new ChromeDriver();
         driver.navigate().to(URL);
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));;
     }
     @Test(dataProvider = "login")
@@ -67,8 +69,7 @@ public class PracticingAutomationDataDrivenTesting {
             }catch (Exception e){
                     System.out.println("Select the all values" + day+ "-" +e.getMessage());
                 }
-
-            }
+         }
     }
     @Test(dataProvider = "dropdown" )
     public void selectDropdown (String value){
@@ -107,8 +108,25 @@ public class PracticingAutomationDataDrivenTesting {
             }
         }
     }
+@Test(dataProvider ="fileUploadData")
+    public void uploadFiles(String filePath) {
+    File file = new File("C:\\Users\\karamjeet\\Documents\\1736913361.png");
+    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+    WebElement uploadFile = driver.findElement(By.id("singleFileInput"));
+    Actions actions = new Actions(driver);
+    actions.moveToElement(uploadFile).perform();
+    if (file.exists()) {
+        uploadFile.sendKeys(file.getAbsolutePath());
+        System.out.println("Uploading file: " + file.getName());
+        System.out.println("File path received: " + filePath);
+        System.out.println("Absolute path: " + file.getAbsolutePath());
+        System.out.println("File exists? " + file.exists());
+        driver.findElement((By.xpath("//button[normalize-space()='Upload Single File']"))).click();
+    } else {
+        System.out.println("File not found!");
 
-
+    }
+}
     @DataProvider(name ="login")
     public Object[] testData() {
         return new Object[][]{
@@ -145,8 +163,20 @@ public class PracticingAutomationDataDrivenTesting {
     @DataProvider(name ="animalList")
     public Object[] testData6() {
         return new Object[][]{
-                {Arrays.asList("rabbit","giraffe","elephant")}
+                {Arrays.asList("rabbit", "giraffe", "elephant")}
         };
+    }
+     @DataProvider(name ="upload")
+        public Object[] testData7() {
+         return new Object[][]{
+                 {"C:\\Users\\karamjeet\\Documents\\1736913361.png"}
+         };
+     }
+         @DataProvider(name ="fileUploadData")
+         public Object[][] uploadFilesData() {
+             return new Object[][]{
+                     {"C:\\Users\\karamjeet\\Documents\\file1.png"}
+             };
     }
 
 
