@@ -2,7 +2,7 @@ pipeline {
     agent any
  
     tools {
-        maven 'Maven 3.8.5'
+        maven 'Maven'
         jdk 'Java 11'
     }
  
@@ -12,7 +12,7 @@ pipeline {
                 git url: 'https://github.com/Karammaxxmann/DatadrivenAutomationFramework.git', branch: 'main'
             }
         }
- 
+    }
         stage('Build') {
             steps {
                 sh 'mvn clean compile'
