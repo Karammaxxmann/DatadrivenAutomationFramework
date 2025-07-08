@@ -39,7 +39,7 @@ pipeline {
         always {
             junit '**/target/surefire-reports/*.xml'
         }
- 
+    }
         failure {
             mail to: 'your-email@example.com',
                  subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
