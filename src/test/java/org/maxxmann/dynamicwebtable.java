@@ -14,8 +14,7 @@ import java.util.List;
 public class dynamicwebtable {
     WebDriver driver;
     String URL = "https://testautomationpractice.blogspot.com/";
-
-    @BeforeTest
+@BeforeTest
     public void setDriver() {
         driver = new ChromeDriver();
         driver.navigate().to(URL);
@@ -25,7 +24,7 @@ public class dynamicwebtable {
 
     @Test(priority = 1)
     public void FullTableDisplay() {
-        List<WebElement> rows = driver.findElements(By.xpath("//table[@id='taskTable']/tbody/tr"));
+        List<WebElement> rows = driver.findElements(By.xpath("//tbody[@id=\"rows\"]//tr"));
         for (WebElement row : rows) {
             List<WebElement> cols = row.findElements(By.tagName("td"));
             for (WebElement col : cols) {
@@ -46,6 +45,7 @@ public class dynamicwebtable {
         String cpuDisplay  =driver.findElement(By.xpath("//strong[@class=\"firefox-memory\"]")).getText();
         System.out.println("Table CPU: " + chromeCpu + " | Display CPU: " + cpuDisplay);
         Assert.assertNotEquals(chromeCpu,cpuDisplay,"Chrome CPU mismatch!");
+
     }
 }
 
