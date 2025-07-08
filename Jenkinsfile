@@ -12,7 +12,7 @@ pipeline {
                 git url: 'https://github.com/Karammaxxmann/DatadrivenAutomationFramework.git', branch: 'main'
             }
         }
-    }
+ 
         stage('Build') {
             steps {
                 sh 'mvn clean compile'
@@ -39,10 +39,11 @@ pipeline {
         always {
             junit '**/target/surefire-reports/*.xml'
         }
-    }
+ 
         failure {
             mail to: 'your-email@example.com',
                  subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                  body: "Check Jenkins for details: ${env.BUILD_URL}"
         }
     }
+}
