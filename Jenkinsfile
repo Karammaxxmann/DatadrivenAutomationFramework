@@ -46,4 +46,3 @@ pipeline {
                  body: "Check Jenkins for details: ${env.BUILD_URL}"
         }
     }
-}
