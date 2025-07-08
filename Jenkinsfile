@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        MAVEN_HOME = '/usr/share/maven'
-        JAVA_HOME = '/usr/lib/jvm/java-11-openjdk' // or adjust as needed
-    }
-
     tools {
         maven 'Maven'  // Match the Maven version installed in Jenkins
         jdk 'Java 11'        // Match the JDK version configured in Jenkins
