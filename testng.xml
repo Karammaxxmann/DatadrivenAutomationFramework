@@ -1,24 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite"><test verbose="2" preserve-order="true" name="C:/Users/karamjeet/IdeaProjects/DatadrivenAutomationFramework">
-    <classes><class name="org.maxxmann.DataPikertype1">
-        <methods><include name="datePikerFutureDate"/></methods></class>
-        <class name="org.maxxmann.DatepikerTypes"><methods><include name="datePikerFutureDate"/>
-            <include name="datePikerPastDate"/></methods></class>
-        <class name="org.maxxmann.KeyworkDriven"><methods><include name="test"/></methods></class>
-        <class name="org.maxxmann.PracticingAutomationDataDrivenTesting"><methods>
-            <include name="forms"/><include name="selectGender"/>
-            <include name="selectDays"/><include name="selectDropdown"/>
-            <include name="multiSelect"/><include name="sortedList"/>
-            <include name="uploadFiles"/></methods></class>
-        <class name="org.maxxmann.dataDrivenExcel"><methods>
-            <include name="test"/></methods>
-        </class><class name="org.maxxmann.dynamicwebtable"><methods>
-            <include name="FullTableDisplay"/><include name="Compare_value"/>
-            <include name="ChromeNetworkWithDisplay"/></methods></class>
-        <class name="org.maxxmann.findbrokenlinks"><methods>
-            <include name="test_found_url"/><include name="foundHttpURL"/>
-            <include name="openlinktab"/></methods></class><class name="org.maxxmann.podjinnlogin">
-            <methods><include name="Test"/></methods></class><class name="org.maxxmann.simpletest">
-            <methods><include name="test"/></methods></class><class name="org.maxxmann.table">
-            <methods><include name="FullTableDisplay"/><include name="TableHeader"/><include name="Display_row_one"/><include name="Display_row_two"/><include name="sum_ofPrice"/><include name="compareVales"/></methods></class></classes></test></suite>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite"><test verbose="2" preserve-order="true" name="C:/Users/karamjeet/IdeaProjects/DatadrivenAutomationFramework/src/test/java"><classes><class name="org.maxxmann.DataPikertype1"><methods><include name="datePikerFutureDate"/></methods></class><class name="org.maxxmann.DatepikerTypes"><methods><include name="datePikerFutureDate"/><include name="datePikerPastDate"/></methods></class>
+    <class name="org.maxxmann.KeyworkDriven"><methods><include name="test"/></methods></class>
+    <class name="org.maxxmann.PracticingAutomation"><methods><include name="verifyToggleToStop"/>
+        <include name="Simple_Alert"/>
+        <!--<include name="Confirmation_Alert"/>-->
+        <include name="Prompt_Alert"/>
+        <include name="WindowTab"/>
+        <include name="popup_Window"/>
+        <include name="double_click"/>
+        <include name="drag_drop"/>
+        <include name="mouse_hover"/>
+        <include name="price_slider"/>
+        <include name="drop_down"/>
+        <include name="keyword_Action"/></methods></class>
+    <class name="org.maxxmann.PracticingAutomationDataDrivenTesting"><methods>
+        <include name="forms"/>
+        <include name="selectGender"/>
+        <include name="selectDays"/>
+        <include name="selectDropdown"/>
+        <include name="multiSelect"/>
+        <include name="sortedList"/>
+        <include name="uploadFiles"/>
+    </methods></class>
+    <class name="org.maxxmann.dataDrivenExcel">
+        <methods><include name="test"/></methods>
+    </class><class name="org.maxxmann.dynamicwebtable">
+        <methods><include name="FullTableDisplay"/>
+            <include name="Compare_value"/>
+            <include name="ChromeNetworkWithDisplay"/>
+        </methods></class>
+    <class name="org.maxxmann.findbrokenlinks"><methods>
+        <include name="test_found_url"/><include name="foundHttpURL"/>
+        <include name="openlinktab"/></methods></class>
+    <class name="org.maxxmann.paginationwebtable"><methods>
+        <include name="FullTableDisplay"/><include name="Sum_of_Price"/>
+        <include name="FooterURL"/>
+    </methods></class>
+    <class name="org.maxxmann.podjinnlogin">
+        <methods><include name="Test"/>
+        </methods></class>
+    <class name="org.maxxmann.simpletest"><methods><include name="test"/></methods></class>
+    <class name="org.maxxmann.table"><methods><include name="FullTableDisplay"/><include name="TableHeader"/><include name="Display_row_one"/><include name="Display_row_two"/><include name="sum_ofPrice"/><include name="compareVales"/></methods></class></classes></test></suite>

@@ -26,7 +26,7 @@ public class PracticingAutomation {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
-    /* @Test()
+     @Test()
      public void verifyToggleToStop() {
          JavascriptExecutor js = (JavascriptExecutor) driver;
          WebElement buttonStart = driver.findElement(By.xpath("//div[@class=\"widget-content\"]//button[normalize-space()='START']"));
@@ -54,7 +54,8 @@ public class PracticingAutomation {
              }
          } else {
              System.out.println("Unexpected button text: " + buttonStart);
-         }*/
+         }
+     }
     @Test
     public void Simple_Alert() {
         WebElement simple_alert = driver.findElement(By.xpath("//button[@id=\"alertBtn\"]"));
